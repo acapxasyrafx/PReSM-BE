@@ -6,7 +6,7 @@
     },
     "routes": [{
         "src": "/(.*)",
-        "dest": "/api/index.php"
+        "dest": "/backend/index.php"
     }],
     "env": {
         "APP_ENV": "production",
