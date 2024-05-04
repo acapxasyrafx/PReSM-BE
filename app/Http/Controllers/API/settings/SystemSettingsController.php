@@ -1,13 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API\settings;
 
+use Illuminate\Http\Request;
+use App\Http\Controllers\BaseController as BaseController;
 use App\Http\Requests\Storesystem_settingsRequest;
 use App\Http\Requests\Updatesystem_settingsRequest;
 use App\Models\system_settings;
 use Illuminate\Http\JsonResponse;
+use validator;
 
-class SystemSettingsController extends Controller
+class SystemSettingsController extends BaseController
 {
     /**
      * Display a listing of the resource.
