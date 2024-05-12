@@ -52,6 +52,22 @@ class ReportDataController extends Controller
         return $count;
     }
 
+    public function show2()
+    {
+        //
+        // return ("Api is on");
+        // $validator = Validator::make($request->all(), [
+        //     'report_name' => 'required',
+        // ]);
+
+        // if($validator->fails()){
+        //     return $this->sendError('Validation Error.', $validator->errors());
+        // }
+
+        $count = DB::table('users')->count();
+        return $count;
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
