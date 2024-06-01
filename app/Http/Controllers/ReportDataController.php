@@ -64,7 +64,7 @@ class ReportDataController extends Controller
         //     return $this->sendError('Validation Error.', $validator->errors());
         // }
 
-        $count = DB::table('users')->count();
+        $count = DB::table('projects')->count();
         return $count;
     }
 
