@@ -18,6 +18,8 @@ Route::controller(RegisterController::class)->group(function(){
 
 Route::controller(ReportDataController::class)->group(function(){
     Route::get('data-report','show');
+    Route::get('data-report2','show2');
+
 });
 
 //Document
