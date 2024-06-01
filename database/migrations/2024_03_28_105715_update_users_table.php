@@ -13,9 +13,9 @@ return new class extends Migration
     {
         //
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role');
-            $table->string('status');
-            $table->string('staffId');
+            $table->string('role')->unsigned()->nullable();
+            $table->string('status')->unsigned()->nullable();
+            $table->string('staffId')->unsigned()->nullable();
         });
     }
 
