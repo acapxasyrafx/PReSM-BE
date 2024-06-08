@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\JsonResponse;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends BaseController
 {
@@ -35,6 +37,13 @@ class RegisterController extends BaseController
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')->plainTextToken;
         $success['name'] =  $user->name;
+
+
+        $title = 'Welcome to the PReMS';
+        $body = 'Thank you for participating!';
+        $email = $request -> emailId;
+
+        Mail::to($email)->send(new WelcomeMail($title, $body));
 
         return $this->sendResponse($success, 'User register successfully.');
     }

@@ -8,6 +8,7 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\settings\SystemSettingsController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReportDataController;
+use App\Http\Controllers\EmailController;
 
 
 Route::controller(RegisterController::class)->group(function(){
@@ -26,6 +27,11 @@ Route::controller(ReportDataController::class)->group(function(){
 Route::controller(ProjectController::class)->group(function(){
     Route::post('addProject','create');
     Route::get('getProject','getProject');
+});
+
+// Mail=
+Route::controller(EmailController::class)->group(function(){
+    Route::get('send-welcome-email','index');
 });
 
 Route::middleware('auth:sanctum')->group( function () {
