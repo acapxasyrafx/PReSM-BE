@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\JsonResponse;
 use App\Mail\WelcomeMail;
+use App\Mail\ForgotPasswordMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class RegisterController extends BaseController
 {
@@ -65,5 +67,38 @@ class RegisterController extends BaseController
         else{
             return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
         }
+    }
+
+    /**
+     * Register api
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function forgotPassword(Request $request): JsonResponse
+    {
+        $validator = Validator::make($request->all(), [
+            'emailId' => 'required|email',
+        ]);
+
+        if($validator->fails()){
+            return $this->sendError('Validation Error.', $validator->errors());
+        }
+
+        $new_password = Str::random(7);
+        $input = $request->all();
+        $input['password'] = bcrypt($new_password);
+        User::where('emailId', $input['emailId'])->update([
+            'password' => $input['password'],
+            // Add more columns and their corresponding new values as needed
+        ]);
+
+
+        $title = 'PReMS : Did You Forget Your Password ? ';
+        $body = sprintf('Your New Password is: %s', $new_password);
+        $email = $input['emailId'];
+
+        Mail::to($email)->send(new ForgotPasswordMail($title, $body));
+
+        return $this->sendResponse('Success', 'Password Reset successfully.');
     }
 }

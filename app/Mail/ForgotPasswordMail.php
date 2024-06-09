@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class ForgotPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -25,19 +25,17 @@ class WelcomeMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to PReMS',
+            subject: 'PReMS : Did You Forget Your Password ? ',
         );
     }
 
     /**
      * Get the message content definition.
-     *
-     * @return \Illuminate\Mail\Mailables\Content
      */
     public function content(): Content
     {
         return new Content(
-            view: 'emails.welcome',
+            view: 'emails.forgotpassword',
             with: [
                 'title' => $this->title,
                 'body' => $this->body,

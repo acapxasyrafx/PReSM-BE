@@ -14,6 +14,7 @@ use App\Http\Controllers\EmailController;
 Route::controller(RegisterController::class)->group(function(){
     Route::post('register', 'register');
     Route::post('login', 'login');
+    Route::post('forgotPassword','forgotPassword');
 });
 // Report
 
