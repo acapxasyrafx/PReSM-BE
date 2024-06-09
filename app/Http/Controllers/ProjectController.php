@@ -36,4 +36,11 @@ class ProjectController extends Controller
         $data = DB::table('projects')->get();
         return $data;
     }
+
+    public function getProjectDetail($id)
+    {
+        $project = DB::table('projects')->where('id', $id )->get();
+
+        return $project;
+    }
 }

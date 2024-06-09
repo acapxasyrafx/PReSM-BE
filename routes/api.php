@@ -28,6 +28,7 @@ Route::controller(ReportDataController::class)->group(function(){
 Route::controller(ProjectController::class)->group(function(){
     Route::post('addProject','create');
     Route::get('getProject','getProject');
+    Route::get('getProjectDetail/{id}','getProjectDetail');
 });
 
 // Mail=
