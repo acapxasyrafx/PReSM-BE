@@ -39,7 +39,7 @@ class ProjectController extends Controller
 
     public function getProjectDetail($id)
     {
-        $project = DB::table('projects')->where('id', $id )->get();
+        $project = DB::table('projects')->where('projectCode', $id )->get();
 
         return $project;
     }
