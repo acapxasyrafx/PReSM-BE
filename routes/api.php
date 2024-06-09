@@ -27,6 +27,7 @@ Route::controller(ReportDataController::class)->group(function(){
 //Document
 Route::controller(ProjectController::class)->group(function(){
     Route::post('addProject','create');
+    Route::get('deleteProject/{projectCode}','delete');
     Route::get('getProject','getProject');
     Route::get('getProjectDetail/{id}','getProjectDetail');
 });

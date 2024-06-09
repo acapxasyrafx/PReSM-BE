@@ -43,4 +43,22 @@ class ProjectController extends Controller
 
         return $project;
     }
+
+    public function delete(Request $request)
+    {
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'emailId' => 'required|email',
+        //     'password' => 'required',
+        //     'password' => 'required|same:password',
+        // ]);
+
+        // if($validator->fails()){
+        //     return $this->sendError('Validation Error.', $validator->errors());
+        // }
+
+        $project = DB::table('projects')->where('projectCode', $request-> projectCode)->delete();
+
+        return ('Project registered successfully.');
+    }
 }
